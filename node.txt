@@ -1,0 +1,49 @@
+npm -v  //to test npm version
+
+node -v  //to test node version
+
+npm install packageName  //to install that package locally (for that navigate to the project)
+
+npm install -g packageName  //to install that package globally so that every others can use it
+
+package.json  //file that information about project name, version, github repo, author
+              //helps to clone your project and need all the specific packages that you used
+              //package json file helps to install all of them at once
+npm install  //to install all packages listed in package.json(if that file exists) with that specific version mentioned in package.json file
+
+npm init  //to create package.json in your project folder
+          //you have to add values manually
+
+npm init -y  //to create package.json file with default values and you can always change that information in the future
+
+//all the new packages will be listed in dependency in package.json file and these modules are stored in node_modules folder
+//that installed package may require other package as dependency and will install that too automatically
+
+npm list  //in project folder to quickly display a list of all installed packages and what version they are
+
+npm view packageName versions  //lists all versions of package from the beginning 
+
+11.11.11
+Major version
+--Used for Big Changes
+--Not Backwards-Compatible
+--Will probably Break Old Code
+Minor version
+--Backwards-Compatible Features
+--Won't Break Older Builds(Ideally)
+Patch version
+--Small Bug Fixes
+--Won't Break Older Builds
+
+npm update  //in project folder you'll get that new version(Minor or Patch version) if ^ symbol is used along with that packageName in dependency
+
+
+npm install packageName@latest  //to update to latest version manually if Major update happens
+       OR
+npm install packageName@5  //to install/update specific version(5 here indicates version number)
+
+npm install packageName@~2.2  //to update to the latest patch within 2.2(version)
+
+package-lock.json  //records the actual specific versions of each package and dependency that you have installed on your local computer
+                   //helps to solve Compatible issues
+
