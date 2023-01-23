@@ -1,0 +1,53 @@
+Week 1
+---------------------------------------------
+
+Before Version Control
+---------------------------------
+diff rearrange1.py rearrange2.py
+c - changed
+a - added
+
+diff -- to show difference between two lines
+wdiff -- to higlight words
+
+diff -u validation1.py validation2.py
+-u -- unified format
+
+diff -u old_file new_file > change.diff
+diff file/patch file
+
+patch cpu_usage.py < cpu_usage.diff
+patch -- to apply changes to original file
+
+cat disk_usage.py  //to see the changes
+patch disk_usage.py < disk_usage.diff
+
+diff -r
+//recursively compare any subdirectories found
+
+
+Version Control Systems
+---------------------------
+git --Version
+
+
+Using git
+-----------
+git config --global user.email "me@example.com"
+git config --global user.name "My name"
+--global -- to use to all repositories
+
+git init  //to initialize a empty git repository
+
+ls -la
+ls -l .git/
+
+git add disk_usage.py
+git status
+git commit
+    OR 
+git commit -m "Commit message"
+
+git config -l  //to see the configurations
+
+git log
