@@ -1,0 +1,101 @@
+#Heading1
+##Heading2
+###Heading3
+####Heading4
+#####Heading5
+######Heading6
+
+This is a **bold message**
+
+This is *italic text*
+
+~~This is my first idea~~  //to strike through
+This is my new idea
+
+This is a [website](google.com) link
+
+![Jijo James](link to the image)  //only ! is added extra to image
+
+
+- item 1  //unordered lists
+- item 2
+- item 3
+
+1. item 1 //ordered list
+2. item 2
+3. item 3
+
+- [] item 1  //check-list
+- [] item 2
+- [] item 3
+
+can use on issue or pull request lists to show the progress on how much of the issue is done or progress is done
+
+- [x] item 1  //done
+
+- item 1  //nested list
+    - item 1a
+    - item 1b
+    - item 1c
+- item 2
+- item 3
+
+Table
+| Column 1 | Column 2 | Column 3 |
+| :--- | :--- | :--- |
+| Row 1, Column 1 | Row 1, Column 2 | Row 1, Column 3 |
+| Row 2, Column 1 | Row 2, Column 2 | Row 2, Column 3 |
+| Row 3, Column 1 | Row 3, Column 2 | Row 3, Column 3 |
+
+":---" will be left aligned
+":---:" will be centred aligned
+"---:" will be right aligned
+
+Inline code
+    You can use the code `const name = 'Jijo James'` in your config file.
+
+Code block
+    ```
+    const name = 'Jijo James';
+            
+    console.log(name);
+    ```
+
+Code highlighting    
+        ```ts
+        const name = 'Jijo James';
+        
+        console.log(name);
+        ```
+
+Code diff
+        ```diff
+        - const firstname = 'Jijo';
+        + const firstname = 'Jino';
+        const lastname = 'James';
+        
+        console.log(firstname, lastname);
+        ```
+
+
+> This is a quote to give context
+        
+I agree with this idea
+
+
+<!-- This is a comment and will not be displayed -->
+
+
+<details>
+    <summary>Click to expand!</summary>
+          
+     ## More great tips!
+
+    - item 1 
+    - item 2
+</details>
+
+
+- item 1 with **bold** text
+- item 2 with *italic* text
+- item 3 ~~is not needed anymore~~
