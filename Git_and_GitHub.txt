@@ -161,3 +161,62 @@ git config --global credential.helper cache  // cache the credential for 15 minu
 git pull
 
 
+git remote -v  // to see the configuration of remote
+
+git remote show origin  // to get more information about remote branch(origin)
+
+
+git fetch  // to fetch from remote repository
+(will download remote branches from remote repositories without merging the content with your current workspace automatically)
+git log origin/master  // to see the commit history
+git status
+git merge origin/master
+
+// git pull instantly merges while git fetch only retrieves remote updates.
+
+
+git pull  // equivalent to fetch and merge
+git log -p -1  // to see the changes
+// if new branch is created in remote repository
+git remote show origin  // to see the experimental branch
+git checkout experimental  // to switch to the experimental branch created in remote repository
+
+
+git branch -r  // to list remote branches
+
+
+git remote update  // to get the contents of a remote branch without automatically merging
+(have to checkout the branches manually and merge it)
+
+
+git log --graph --oneline --all  // to see the tree of commits on all branches
+
+
+git log -p origin/master
+
+
+git push -u origin refactor
+
+
+git checkout master
+git pull
+git log --graph --online --all
+git checkout refactor
+git rebase master  // to rebase commits which helps the code to be linear
+git log --graph --oneline
+git checkout master
+git merge refactor
+git push --delete origin refactor  // to delete the remote branch
+git branch -d refactor  // to delete branch locally
+git push
+
+What does “git rebase refactor” do?  // Move the current branch on top of the master branch
+
+
+git fetch
+git rebase origin/master
+// solve the conflict
+git add health_checks.py
+git rebase --continue  // to continue the rebase
+git log --graph --oneline
+git push
