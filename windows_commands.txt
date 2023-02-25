@@ -63,3 +63,48 @@ rm ~\misc_folder (asks for permission to remove all contents within it)
 OR 
 rm ~\misc_folder -Recurse
 \\ -Recurse -- to recursively remove all files in that folder
+
+
+cat     //concatenate( to see contents in a file )
+cat .\important_document.txt
+
+more    //to see the content one page at a time
+more .\large_document.txt
+// ENTER - advances the page by one line
+// SPACE - advances the file by one page
+// q - to quit and go back to terminal window
+
+cat fruit.txt -Head 10  //shows first 10 lines of file
+-Head   //to get an idea about what the file content is
+cat fruit.txt -Tail 10  //shows last 10 lines of file
+-Tail   //to get an idea about what the file content is
+
+
+Get-Alias   //to see command corresponding to the Alias
+Get-Alias ls    //to see command used by ls Alias
+
+
+sls     //Select-String command to search and find words or string in files
+Select-String cow farm_animals.txt
+Select-String cow *.txt
+
+
+ls 'c:\Program Files\' -Recurse -Filter *.exe
+\\ -Filter -- to search for contents within a directory 
+(The -Filter parameter will filter the results for file names that match a pattern)
+
+
+echo woof > dog.txt
+>   //redirect operator( over-write it )
+echo woof >> dog.txt
+>>  //don't over-write but append it
+
+|   //pipeline operator sends output of one command to the input of another
+cat words.txt | Select-String st    //to find words that contains st
+cat words.txt | Select-String st > st_words.txt     //stores the result in a new file
+
+
+1: stdout - the output
+2: stderr - the error
+rm secure_file 2> errors.txt    //2> - to get error messages
+rm secure_file 2> $null     //output is filtered from error messages
