@@ -1,0 +1,47 @@
+PATH example: /home/Cindy/Desktop   //   / is the root directory
+
+ls /    //to see contents in root directory
+
+ls --help   //to get help
+man ls      //to get manual(help)
+
+ls -l /     // -l -- to get long info
+ls -la /    // -a -- to show all files including hidden files( .filename means those files are hidden)
+
+
+pwd     //shows current directory
+
+cd /home/cindy/Documents
+cd ../Documents
+cd ~/Desktop
+
+
+mkdir   //to make directory
+mkdir my_cool_folder
+mkdir 'my cool folder'
+mkdir my\ cool\ folder      // uses as an escape sequence
+
+
+history     //to see the history
+
+CTRL + R    //to search the history using known keywords
+
+clear   //to clear the screen
+
+
+cp my_cool_folder ~/Desktop
+cp *.png ~/Desktop      ( * - wildcard for selecting all)
+// -r -- for recursively copy
+cp -r 'Cat Pictures' ~/Desktop      //to recursively copy Cat Pictures folder contents
+
+
+mv  //to rename or move files
+mv red_document.txt blue_document.txt
+mv blue_document.txt ~/Documents
+mv *_document.txt ~/Desktop
+
+
+rm  // to remove files and folders (Take precausion not to remove important things by any accident)
+rm text1.txt
+rm -r misc_folder
+// -r -- for recursively deleting files within that folder
