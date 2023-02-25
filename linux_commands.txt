@@ -45,3 +45,34 @@ rm  // to remove files and folders (Take precausion not to remove important thin
 rm text1.txt
 rm -r misc_folder
 // -r -- for recursively deleting files within that folder
+
+
+cat     //to view a document 
+cat important_document.txt
+
+less    //to view large files
+less large_document.txt
+// UP and DOWN keys - to move up and down
+// g - to go to the beginning of the file
+// G - to move to the end of the file
+/word_search  -- word_search is replaced with a word to find the match in that file
+// q - to quit and go back to the terminal
+
+head fruits.txt     //to show first 10 lines of file
+tail fruits.txt     //to show last 10 lines of file
+
+
+grep    //to search for files that match a certain pattern
+grep cow farm_animals.txt
+grep cow *_animals.txt
+
+
+echo woof > dog.txt
+echo woof >> dog.txt
+cat < file_input.txt    //same as cat file_input.txt
+
+ls /dir/fake_dir 2> error_output.txt    //to output error
+
+less /var/log/syslog 2> /dev/null   //to output error messages to metaphorical black-hole
+
+ls -la /etc | grep bluetooth    //to search for specific content from output of one command
