@@ -51,3 +51,172 @@ git commit -m "Commit message"
 git config -l  //to see the configurations
 
 git log
+
+
+git commit -a -m "commit message"  //to skip the staging area
+
+----------------------------------------------------------------------
+                        Important
+----------------------------------------------------------------------
+
+git log -p  //equivalent to diff -u
+-p  -- means patch
+
+
+git show commitID
+
+git log  //to get commitID
+git show commitID
+
+
+git log --stat  // to show some stats
+
+
+git diff  // to show the changes in only unstaged changes(by default) before staging it
+
+
+git add -p  // show the changes in the files and ask the user whether to stage it or not
+
+
+git diff --staged  // to show the changes that are staged, but not commited
+
+
+git rm file_name  // has to follow the same workflow as commiting (it is now staged)
+git commit -m "commit message"
+
+
+git mv old_file_name new_file_name  // to rename a file (it is now staged)
+git commit -m "commit message"
+// can also be used for moving files between directories
+
+git status  // most helpful
+
+
+echo .DS_STORE > .gitignore
+ls -la  // to see all files
+git add .gitignore
+git commit -m 'Added a gitignore file, ignoring .DS_STORE files'
+
+
+git checkout file_name  // to revert back from modified files before they get staged (restore from either commited or staged)
+// check git checkout -p
+
+
+git reset HEAD file_name  // to reset to current checked-out snapshot when staged
+eg: git reset HEAD output.txt  
+// check git reset -p 
+
+-p -- to look into which file to be changed
+
+
+touch auto-update.py
+touch gather-information.sh
+ls -l
+git add auto-update.py
+git commit -m 'Add two new scripts'
+
+git add gather-information.sh
+git commit --amend  //override the previous commit
+
+--amend  // to override the previous commit
+Avoid amending commits that have already been made public (use only in local repo)
+
+
+git revert HEAD  // to revert to previous commit
+git log -p -2  // to see last two commits (-p to see the patch and -2 to limit the output to two last entries)
+// git revert will create will create a new commit that is the opposite of everthing in the given commit
+// a new commit is created with inverse changes
+
+git revert commitID  // to revert back to specific commitID
+
+
+git branch  // to check branches
+
+git branch new-feature  // to create new branch
+
+git checkout new-feature  // to switch to new branch
+
+git checkout -b even-better-feature  // to create a new branch and switch to it 
+
+git branch -d new-feature  // to delete a branch
+
+git checkout master
+git merge even-better-feature  // to merge the changes to master branch
+
+Types of merges:
+-- fast-forward
+-- three-way merge
+
+
+git log --graph --oneline
+--graph -- to see the commits as a graph
+--oneline -- to only see one line per commit
+
+git merge --abort  // to abort the merge and comes back to the previous commit in the branch
+
+
+git clone URL
+git push
+git config --global credential.helper cache  // cache the credential for 15 minutes
+git pull
+
+
+git remote -v  // to see the configuration of remote
+
+git remote show origin  // to get more information about remote branch(origin)
+
+
+git fetch  // to fetch from remote repository
+(will download remote branches from remote repositories without merging the content with your current workspace automatically)
+git log origin/master  // to see the commit history
+git status
+git merge origin/master
+
+// git pull instantly merges while git fetch only retrieves remote updates.
+
+
+git pull  // equivalent to fetch and merge
+git log -p -1  // to see the changes
+// if new branch is created in remote repository
+git remote show origin  // to see the experimental branch
+git checkout experimental  // to switch to the experimental branch created in remote repository
+
+
+git branch -r  // to list remote branches
+
+
+git remote update  // to get the contents of a remote branch without automatically merging
+(have to checkout the branches manually and merge it)
+
+
+git log --graph --oneline --all  // to see the tree of commits on all branches
+
+
+git log -p origin/master
+
+
+git push -u origin refactor
+
+
+git checkout master
+git pull
+git log --graph --online --all
+git checkout refactor
+git rebase master  // to rebase commits which helps the code to be linear
+git log --graph --oneline
+git checkout master
+git merge refactor
+git push --delete origin refactor  // to delete the remote branch
+git branch -d refactor  // to delete branch locally
+git push
+
+What does “git rebase refactor” do?  // Move the current branch on top of the master branch
+
+
+git fetch
+git rebase origin/master
+// solve the conflict
+git add health_checks.py
+git rebase --continue  // to continue the rebase
+git log --graph --oneline
+git push
