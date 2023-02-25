@@ -1,0 +1,65 @@
+PATH example: C:\Users\Cindy\Desktop
+
+ls - list directory
+ls c:\
+
+Get-Help ls     //to get Help
+Get-Help ls -Full   //to get more info
+
+ls -Force c:\   //to see hidden folders
+
+
+Absolute path - one that starts from the main directory
+Relative path - path from your current directory
+
+pwd     //print working directory - to see the directory you are currently in
+
+cd      //change directory
+cd c:\Users\cindy\Documents
+cd ..   //to get one level back
+cd ..\Desktop   //to go one step relatively back and navigate to Desktop folders
+cd ~    //to get to home directory( ~ - path of your home directory)
+cd ~/Desktop    //to get to Desktop folder
+
+
+mkdir   //to make new directory
+mkdir my_cool_folder
+mkdir 'my cool folder'
+mkdir my` cool` folder    \\to indicate space after the `(back-tick) is a part of the filename( ` is an escape character)
+
+
+history     //to get the previously entered commands
+
+CTRL + R    //to search in the history the commands using keywords
+
+clear   //clear the output on the screen
+
+
+cp  //to copy
+cp mycoolfile.txt c:\Users\cindy\Desktop\
+
+Wildcard - A character that's used to help select files based on a certain pattern
+
+cd c:\Users\cindy\Documents
+ls
+cp *.jpg c:\Users\cindy\Desktop\  ( * - to select all jpg files)
+cp 'Bird Pictures' ~/Desktop( + TAB - for auto-completion)      //to copy Bird Pictures directory to Desktop directory(But it doesn't copy the contents)
+cp 'Bird Pictures' c:\Users\cindy\Desktop\ -Recurse -Verbose
+//-Recurse -- to copy over the contents in that directory(doesn't output anything to CLI by default)
+//-Verbose -- output one line for each file the directorybeing copied
+
+
+mv  //to move from one directory to another or rename files
+mv .\blue_document.txt yellow_document.txt
+mv .\yellow_document.txt ~\Documents( + TAB - for auto-completion)
+mv *_document.txt ~\Documents( + TAB for auto-completion)   //using wildcard
+
+
+rm   //to remove files and directory( rm doesn't use recycle bin)
+rm ~\text1.txt
+rm ~\important_system_file( + TAB) -Force
+\\ -Force -- to remove system files that cannot be simply removed using rm command
+rm ~\misc_folder (asks for permission to remove all contents within it)
+OR 
+rm ~\misc_folder -Recurse
+\\ -Recurse -- to recursively remove all files in that folder
