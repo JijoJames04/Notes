@@ -173,13 +173,15 @@ Since file A(layer) is already downloaded, so does not download it again. And do
 docker login    // for logging in to dockerhub
 
 touch Dockerfile    // This filename is the convention
+// Dockerfile is the recipie to create an image
 
 FROM ubuntu
 RUN apt-get update
 CMD ["echo", "Hello my name is Jijo"]
 // This means that ubuntu is the base image
-// Because every single image has a base image
-// CMD -- means what executables will run when the container has started
+// Because every single image has a base image(it's like ubuntu is your OS and on top of that you do your work)
+// RUN apt-get update -- while the container is being created, it will run this command
+// CMD -- means what execut ables will run when the container has started
 // the number of commands will be giving in an array form of format
 
 docker build -t myimage .   // to build the image using Dockerfile
@@ -188,3 +190,9 @@ docker build -t myimage .   // to build the image using Dockerfile
 
 // while building docker will send all the data in the folder will be sent to docker deamon
 // so create an empty folder that has Dockerfile in it and build in there
+
+// Docker cli will communicate with the Daemon and build the image
+
+Sign-in to Docker Hub to upload images
+
+docker login    // to log-in from terminal
