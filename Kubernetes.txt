@@ -1,0 +1,66 @@
+* Configuration management
+---------------------------
+You can maintain all the changes in the infrastructure with the
+help of software
+    - Immutability
+
+
+Installation
+-------------
+1. Kubectl
+2. Minikube (already installed with Docker Desktop)
+3. Kubeadm
+4. Bert option: Cloud provider
+
+kubectl version --output=yaml   // to check the version
+
+minikube start      // to start a cluster
+(download everything needed to run a kubernetes cluster)
+
+minikube status     // to check the status of the cluster created by minikube
+
+kubectl get pods    // to see the pods running
+
+kubectl get nodes   // to see the nodes running
+
+minikube dashboard  // to see the in-built dashboard (on localhost)
+
+minikube docker-env     // to see the environment variables that are required to communicate
+                        // your local computer with remote servers
+
+docker container ls     // to see the containers required by kubernetes
+
+
+Everything that is running inside a virtual machine is running inside a container.
+-----------------------------------------------------------------------------------
+
+
+minikube ssh    // to go inside minikube
+                //(inside minikube it installed docker runtime)
+        |
+        docker ps   // to see all the containers that are running inside minikube
+
+kubectl config view     // this is the config file
+                        // It has the information about our cluster
+
+kubectl config current-context  --> minikube
+                        // to see the current context
+
+kubectl get all         //to see the pods that are running, services, deployments and services
+
+
+Deployment is a type of controller.
+------------------------------------
+
+
+kubectl delete pod podName      // to delete a specific pod
+
+kubectl get deployments         // to see the deployments
+
+kubectl delete deployments deploymentName   // to delete a specific deployment
+
+kubectl get pods                // to see the pods that are also deleting
+(Because the deployment is deleted, so the pods of the deployment are also gone)
+
+kubeconfig file contains information that will be relevant to access your cluster.
+-----------------------------------------------------------------------------------
