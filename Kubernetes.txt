@@ -64,3 +64,21 @@ kubectl get pods                // to see the pods that are also deleting
 
 kubeconfig file contains information that will be relevant to access your cluster.
 -----------------------------------------------------------------------------------
+
+kubectl create -f pod.yaml      // to create a pod with definitions given
+
+kubectl get pod nginx-pod -o wide   // for getting more information about created nginx-pod
+// -o -- output
+// wide
+
+kubectl get pod nginx-pod -o yaml   // for getting more information about created nginx-pod in yaml format
+
+kubectl describe pod nginx-pod  // to get information about when the pod was created and time events and stuff
+
+kubectl forward-port nginx-pod 8080:80  // to expose the pod outside the container
+(Whenever go to port 8080 of localhost you should go inside nginx port 80)
+(nginx runs on port 80)
+
+This is running inside:
+kubernetes inside nginx-pod inside that a container
+ie, kubernetes -> pod -> container
