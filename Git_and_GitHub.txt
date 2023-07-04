@@ -157,7 +157,7 @@ git merge --abort  // to abort the merge and comes back to the previous commit i
 
 git clone URL
 git push
-git config --global credential.helper cache  // cache the credential for 15 minutes
+git config --global credential.helper cache  // cache the credential for 15 minutes (OR use SSH key-pair)
 git pull
 
 

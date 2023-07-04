@@ -1,0 +1,91 @@
+docker run --name myapp_c2 -p 4000:4000 -d myapp
+
+--name - name of the container
+-p     - publish for publishing the port or mapping the port
+-d     - detached means run without blocking the terminal(detach terminal from the process)
+docker run - runs an image to create a new container
+
+
+docker images
+
+docker ps (running processes)
+
+docker ps -a
+
+-a     - to list all the containers
+
+docker stop container_name
+
+docker start container_name
+docker start - start or run a container that was already created
+
+docker build -t myapp2 .
+-t     - tag for specifying the name of the image
+.      - to specify where the Dockerfile is located
+
+
+layer caching
+
+
+docker image rm myapp4
+rm     - for deleting
+
+docker image rm myapp5 -f
+-f     - for forcefully removing an image even-though a container is created using it
+
+docker container rm myapp_c2(container name)
+
+docker container rm myapp_c2 myapp_c3 (for removing these 2 containers)
+
+**docker system prune -a **
+**delete all images, containers and volumes**
+
+
+**volumes**
+Used for directory mapping between the host computer and the container
+
+nodemon - restart the server automatically when it detects changes in the container
+(it is a tool used during development that makes easier to see changes as we make them)
+
+"dev": "nodemon -L app.js"  in package.json file
+-L      - is required when we are working on windows otherwise causes error
+
+docker run --name myapp_c_nodemon -p 4000:4000 --rm  myapp:nodemon
+--rm    - remove or delete container automatically when we stop it
+
+**docker run --name myapp_c_nodemon -p 4000:4000 --rm -v C:\Users\91906\Downloads\docker-crash-course-lesson-5\docker-crash-course-lesson-5\api:/app  myapp:nodemon **
+-v      - volume to map folder in our computer to the folder in the container
+will map project folder on our container to the app folder in the container(will be in sync with the project folder on our computer)
+
+
+**docker run --name myapp_c_nodemon -p 4000:4000 --rm -v C:\Users\91906\Downloads\docker-crash-course-lesson-5\docker-crash-course-lesson-5\api:/app -v /app/node_modules myapp:nodemon **
+the second volume will be managed by docker somewhere on our computer
+
+-v /app/node_modules  - used this volume to avoid problems with node modules folder that are not install on our computer so that nodemon 			will not create problem in the container 
+
+
+
+**Docker compose **
+
+docker-compose up
+for creating images and containers and running the containers
+
+docker-compose down
+for stopping and deleting the containers
+
+docker-compose down --rmi all
+for stopping and deleting the containers and also deleting the images
+
+docker-compose down --rmi all -v
+for stopping and deleting the containers, deleting the images and also deleting the volumes
+
+
+
+**Publishing images **
+
+docker image prune --all
+
+docker build -t jijojames04/myapi .
+
+docker login
+for login purpose to dockerhub
