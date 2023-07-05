@@ -1,0 +1,362 @@
+where git
+
+echo $PATH      // environment variable paths
+
+ls -a
+
+cat .zshrc
+
+cat ~/.zprofile
+
+export MY_PATH="Jijo" 
+$MY_PATH                // only valid for that particular session
+
+pwd         // print working directory
+
+ls -la
+
+open .
+
+ls -R       // shows files in sub-directory
+
+cat plugin.yaml     // shows the content
+
+cat > Hello
+My name is Jijo     // creates a file and add the contents after it
+cat Hello           // only lines before hitting enter will be stored in the file
+
+cat file.txt two.txt > total.txt        // merge two files
+cat total.txt       // contains both the file contents
+
+echo "Hello world" > file.txt
+cat file.txt
+
+man echo        // to get information about some commands
+
+// tunnel / pipe  (output of the first command will be used as the input of the second command)
+cat file.txt | tr a-z A-Z > upper.txt   // translate all lower cases to upper cases and put it in a file
+
+>   // re-direction operator
+
+\   // used for chaining different commands
+cat files.txt \
+        // more commands can be given in new line
+
+mkdir test      // for making test folder
+
+mkdir random
+mkdir random/hello      // for making hello folder inside random folder
+
+-p -- parents command      // for making directory between two directory
+mkdir -p random/middle/hello    // not moving somewhere (original directory remains as it was)
+
+touch names.txt
+touch test/house.txt
+
+cp file.txt copy_file.txt
+
+mv names.txt random         // for moving contents
+mv file.txt newName.txt     // for renaming file
+
+echo I am in names.txt > names.txt
+mv names.txt ../newNames.txt    // for moving and renaming at the same time
+
+rm copy_file.txt        // remove permanently
+
+cp -R test random       // for copying a folder to another folder
+
+mv test renamedTest     // for renaming a folder
+
+mv renamedTest random 
+mv random/renamedTest .     // for copying to current directory
+
+rm -R renamedTest           // for deleting a folder
+
+rm -rf      // for forcefully deleting 
+
+df          // for checking systems disk space usage (in KB)
+
+df -m         // for checking systems disk space usage (in MB)
+
+df -h         // for showing in human readable format
+
+du            // shows the disk usage statistics in that folder
+
+du -h         // shows the disk usage statistics in that folder in human readable format
+
+head total.txt      // displays the first 10 lines in the file
+
+head -n 4 total.txt     // displays the first 4 lines in the file
+
+tail total.txt          // displays the last 10 lines in the file
+
+tail -n 2 total.txt     // displays the last 2 lines in the file
+
+diff total.txt two.txt   // compares two contents of the files line-by-line and output the lines that will not match
+
+locate "*.txt"          // locate all the txt files
+
+locate partner-jet-setup.txt
+
+find .      // find all the contents in the current directory
+
+find ..     // find all the contents in the previous directory
+
+find . -type d         // find in the current directory of type directory or folder
+
+find . -type f         // find in the current directory of type file
+
+find . -type f -name "two.txt"     // find in the current directory file with name two.txt
+
+find . -type f -name "two*"      // find in the current directory file with name starting with two
+
+find . -type f -name "*.txt"    // find all txt files in the current directory
+
+find . -type f -iname "*.txt"   // find the file without case sensitive
+
+find . -type f -mmin -20        // find all the files that are modified within 20 min ago
+
+find . -type f -mmin +15        // find all the files that are modified more than 15 min ago
+
+-m -- modified more than
+
+find . -type f -mmin +2 -mmin -10  // find all the files that are modified more than 2 min ago but less than
+                                   // 10 min ago
+
+find . -type f -mtime -10   // find all the files that are modified less than 10 days ago
+
+man find
+
+find . -type f -maxdepth 1  // find all the items in the current directory not in the sub directory (not recursively checking)
+                            // for checking in one more subdirectory change 1 to 2
+
+find . -size +1k      // find all the files that are more than 1KB
+
+find . -size +1M      // find all the files that are more than 1MB
+
+find . -size +1G      // find all the files that are more than 1GB
+
+find . -empty         // find in current directory all the files that are empty
+
+find . -perm 777      // find all the files with permissions read, write and execute
+
+
+User, Group and Others
+
+ls -l upper.txt
+chmod u=rwx,g=rx,o=r upper.txt      // for changing the file permissions
+        OR 
+chmod 777 upper.txt             // for changing the file permissions
+
+4 - read
+2 - write
+1 - execute
+0 - no permission
+
+whoami          // to check in which user I logged in as
+
+sudo chown root upper.txt       // for giving the root permission(ie, only root person can have it)
+sudo cat upper.txt      // only root user can access it
+
+(sudo has most number of access rights in the system and it's called root)
+
+-exec -- execute 
+find . -type f -name "*.txt" -exec rm -rf {} +     // remove all the files that are found using find command
+                                                   // and remove them
+{} -- used as place holder for storing the names 
++ -- used to placing next file names
+(Can also be used to rename files that are found using find command after -exec)
+
+grep "Kunal" names.txt  // for searching the contents in a file
+
+-w -- for searching the complete word
+grep -w "Kunal Kushwaha" names.txt       // for searching the complete word
+
+grep -w "Kunal Kush" names.txt          // not found because its not a complete word
+
+grep "kunal" names.txt          // not found
+
+grep -i "kunal" names.txt       // case-insensitive so item found
+
+grep -iw "kunal" names.txt      // case-insensitive and word combined
+
+grep -n "Kunal" names.txt       // shows the line number
+
+grep -win "Jijo" names.txt      // case-insensitive, word and line number combined
+
+grep -B 3 "Jins" names.txt      // shows the previous 3 lines that comes before Jins
+
+grep -win "Kunal" ./*.txt       // shows all the files that contains Kunal in the current directory
+
+grep -rwin "Kunal" .            // searches for the name Kunal in the current directory recursively
+-r -- recursively
+
+grep -wirl "Kunal" .            // location of all the files that contain Kunal
+-l -- used for finding the location
+
+grep -wirc "Kunal" .            // for finding the count of times it is present in a file in the current directory
+-c -- used for finding the count
+
+(pipe)
+history | grep "ls"     // history of all the commands that were ls commands
+
+
+-P -- pearl compatibile regular expression
+grep -P "\w" companies.txt      // all the words in the companies.txt
+\w -- means word
+
+grep -P "\d{3}-\d{3}-\d{4}" phone.txt     // for finding the phone number
+\d -- means digit
+
+alias      // for finding all the aliases
+
+
+vi ~/.zshrc
+alias gpom='git push origin main'       // for setting the alias permanently
+
+alias something='git push origin main'  // for setting the alias temporarily
+                                        // only for that session
+
+
+git push origin main   
+CTRL + A        // for moving the cursor to the beginning 
+CTRL + E        // for moving the cursor to the end
+CTRL + K        // everything after the cursor will be removed
+CTRL + U        // remove everything
+TAB             // used for auto-completion
+CTRL + R        // for searching the previous commands
+CTRL + L        // remove everything on the screen
+
+
+from history
+!number         // run the command in number from history
+
+!find           // run the previous find command
+
+CTRL + R        // for searching the previous commands
+
+CTRL + L        // remove everything on the screen
+
+; -- for adding multiple commands in a single line
+(one-by-one they will be running)
+git add .;git commit -m "message";git push origin main
+
+
+sort -r companies.txt         // sort in reverse order companies.txt
+
+sort companies.txt         // sort companies.txt
+
+sort -f companies.txt      // case-insensitive sorting
+
+sort -n companies.txt      // sorts in numberical order(numbers)
+
+
+jobs -- the process that are started by the shell
+jobs
+
+ping google.com           // for connectivity status
+
+man wget
+
+wget http://www.africau.edu/images/default/sample.pdf   // for downloading a file
+
+wget -o myfile.pdf http://www.africau.edu/images/default/sample.pdf     // for saving downloaded file with a filename
+
+top     // for checking what all processes are running and how much resources are consuming
+
+kill PID  // to stop the process(PID - process ID)
+
+uname   // to get information of which os is using
+
+zip files.zip companies.txt     // for zipping the file
+
+zip files2.zip companies.txt names.txt      // for zipping more files
+
+unzip files2.zip        // for unzipping the zip file
+
+hostname        // for getting DNS name
+
+hostname -i     // for getting the ip address of the host(can be used for getting the ip of the container)
+
+sudo useradd User       // for adding a new user
+sudo passwd User        // for setting password for new user
+
+sudo userdel User       // for deleting an existing user
+
+uname           // for checking which os is using
+uname -o        // for checking the type of the os
+uname -m        // for checking the architecture
+uname -r        // for checking the kernel version
+
+cat /etc/os-release     // for getting information about the os
+
+lscpu           // for getting cpu details
+
+free            // for checking the free memory
+free -h         // for checking the free memory in human-readable format
+
+vmstat          // for checking the virtual memory
+vmstat -S m     // for checking the virtual memory in MB
+
+id              // for getting the ID
+id -g           // for getting just the ID
+id -G           // for getting the group ID
+id -r           // for getting real ID instead of numbers
+
+getent group User       // to check whether particular user exists or not
+getent passwd User      // for checking where the password exists for that user
+
+id User         // for getting the ID of the User
+
+lsof            // for listing all the open files
+(files that are currently open by the system)
+lsof -u jijo    // for listing all the files that are opened by the user jijo
+
+nslookup google.com     // for checking ip address of a particular domain
+nslookup 142.250.196.46 // for getting more information
+
+// for finding all the ports that are currently listening
+
+ifconfig
+
+man sed
+
+man cut
+
+cut -c 1-2 companies.txt    // for cutting first 2 colums of file (used with logs)
+
+telnet
+
+ssh
+
+htop    // for checking all the processes that are eating-up your resources
+
+ps aux  // for getting process ID and other stuff
+
+ping google.com & ping commclassroom.org        // for running other processes in background
+(& is used for running othe process in background)
+// creates other process in background(child process creation)
+
+kill PID        // as running in background kill it using process ID
+
+// && -- command succeeding the operator will only execute when the previous one is finished executing
+echo "first" && echo "second"
+
+// || -- command succeeding the operator will only execute when the previous one is failed to execute
+(like else statement)
+echo "first" || echo "second"
+
+// | -- pipe(sends the output of the first command to the next command)
+
+// ! -- used for excepting some file
+rm -rf !(surnames.txt)      // delete all files except surnames.txt
+rm -r !(names.txt)      // remove all the files except names.txt
+
+echo "hey" >> names.txt     // append something to another
+
+echo "hey" > names.txt      // override the file
+
+// \ -- concatenate various commands line-by-line
+
+// combination operator
+echo "hey" && {echo "hi"; echo "i am good"}     // used for group these commands

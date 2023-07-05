@@ -1,0 +1,198 @@
+Initially
+-----------
+One application on one server
+
+VMWare solved this problem by Virtual Machines(VM's)
+ie, Multiple applications on the same server
+
+Next problems: 
+* Needed new dedicated OS to use VM(ie, One OS for on application)
+* Not so fast
+* Needed dedicated storage, own softwares, CPU allocation and RAM allocation
+* Dependency problem(ie, Works on my machine)
+
+
+Containers
+------------
+Isolated environments that you can run your application
+Running instance of an image
+
+Windows: Docker Desktop + WSL(Windows Subsystem for Linux)
+MAC: VM's & Docker Desktop
+           ----------------
+Linux: As it is
+
+
+Docker
+-------
+
+1. Runtime
+    - runc
+    - containerd
+
+2. Engine
+    - daemon
+    (client-server architecture from docker cli to daemon using REST API)
+
+3. Orchestration Engine (Kubernetes)
+    (Allows us to manage containers)
+
+
+Docker image - file that contains all the instructions to start the application
+
+Docker images can be created using Docker files(Dockerfile is the recipie)
+
+
+docker run -it ubuntu
+// -it -- means interactive environment
+
+docker ps       // for seeing running containers
+
+
+        DevOps
+    App             Download image
+    Dockerfile      Run image
+    image           Operating
+    contain
+
+
+docker run hello-world
+// docker: docker cli
+// run: run an image to create a container
+// image-name
+
+downlaoding from docker-registry(docker hub)
+
+docker images   // to see all the images that are downloaded on local machine
+
+## Can be used for hackathons to spin-up a container linke mongo/mysql
+## without downloading it on your machine
+
+
+docker pull mysql   // downloading mysql from registry
+
+docker pull ubuntu:16.04    // for downloading a particular version
+
+docker run -it ubuntu:16.04
+// interactive environment means don't exit out of it
+
+docker ps       // for showing all the running containers
+    OR 
+docker container ls
+
+
+docker container exec -it b55e0b4b5bc3 bash
+// bash shell should be attached to this running container
+// this ID used is of ubuntu
+            OR
+docker exec -it b55e0b4b5bc3 bash
+
+docker stop a79ff7aa60af    // for stopping a running container
+// this ID used is of mongo
+
+docker ps -a        // to show all the containers that are stopped
+
+docker ps -a 
+docker rm a79ff7aa60af      // to remove a container
+// containerID is used
+
+docker inspect ubuntu       // gives all the information about the container
+    OR
+docker inspect 02d036b49b32
+
+docker log 026fbe288895     // for showing logs and its output of that particular containerID
+
+docker container prune -f   // deleted these containers
+// prune -- basically a command that is deleting all the stopped containers
+// -f -- means forced
+
+docker run -d alpine ping www.civo.com
+// for running in background (-d -- means detach mode)
+// used for running servers
+
+docker run ubuntu echo Hey
+// docker run ubuntu -- this particular thing run it
+// echo Hey -- put it in the terminal of it
+
+Everything running on docker, it's base is on linux kernel
+
+docker logs --since 5s 2902     // to show the logs since last 5 seconds
+
+docker stop 2902    // to stop the container that run as a server
+// containerID is given at the end
+
+docker rm 2902      // to remove the container
+
+
+docker images 
+
+docker rmi alpine -f    // to remove alpine image
+// i -- means image
+// -f -- means forced
+
+docker run -d -p 8080:80 nginx  // forwarding the port(port forward)
+// -p -- means port
+// -p takes two arguments
+// 8080 -- the port you want to expose it to
+// 80 -- port of the container (nginx default port is port 80)
+
+
+docker ps -a                // used to get the last containerID
+docker start 84bca9d0ad5c   // to start the instance of that container again
+docker exec -it 84bca9d0ad5c bash   // to interact with the shell of that container
+
+docker commit -m "added names.txt" 84bca9d0ad5c names_ubuntu:1.01   // saving a container to share the same with others
+// save the container with a commit message so as to share the same container with others
+// containerID of container you want to commit
+// mention the image name of your wish(version if you want)
+
+docker images   // to see the newly committed image
+// names_ubuntu image is created
+// TAG -- version you have given
+
+docker run -it names_ubuntu:1.01    // to run the saved image
+
+docker images -q // to get the ID's of all images
+
+docker rmi $(docker images -q) -f   // to remove all the images at once
+
+docker rm $(docker ps -a -q)        // remove all stopped containers
+
+
+    Layers(Images are built in layers)
+------------------------------------------------
+Some files are there that maybe shared by many images, hence images are built in layers.
+If a particular image is common, it will not download that file again. this makes it fast.
+
+Layers are associated with SHA256 hash value.
+
+Imagine Ubuntu image contains a file A and MongoDB image also contains that same file A.
+Since file A(layer) is already downloaded, so does not download it again. And download the files(layers) that are missing.
+
+
+docker login    // for logging in to dockerhub
+
+touch Dockerfile    // This filename is the convention
+// Dockerfile is the recipie to create an image
+
+FROM ubuntu
+RUN apt-get update
+CMD ["echo", "Hello my name is Jijo"]
+// This means that ubuntu is the base image
+// Because every single image has a base image(it's like ubuntu is your OS and on top of that you do your work)
+// RUN apt-get update -- while the container is being created, it will run this command
+// CMD -- means what execut ables will run when the container has started
+// the number of commands will be giving in an array form of format
+
+docker build -t myimage .   // to build the image using Dockerfile
+// -t -- means tag(used for specifying the image name and maybe version)
+// it builds the image from the file stored in the current directory
+
+// while building docker will send all the data in the folder will be sent to docker deamon
+// so create an empty folder that has Dockerfile in it and build in there
+
+// Docker cli will communicate with the Daemon and build the image
+
+Sign-in to Docker Hub to upload images
+
+docker login    // to log-in from terminal

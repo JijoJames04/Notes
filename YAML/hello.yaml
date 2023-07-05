@@ -1,0 +1,22 @@
+"apple" : "I am a red fruit"
+1: "this is Jijo's roll number"
+---   # to inform yaml that these are 3 different documents(using ---)
+# lists
+- apple
+- mango
+- banana
+- Apple
+---
+cities:   # block style
+ - new delhi
+ - mumbai
+ - gujrat
+---
+cities: [new delhi, mumbai]   # to avoid indentation errors in a single line
+---
+{mango: "yellow fruit", age: 56}    # key - value pairs
+...   # to represent that document finished or has ended
+
+# a yaml file is a collection of zero or more documents
+
+# yaml doesn't provide multi-line comments

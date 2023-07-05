@@ -1,0 +1,8 @@
+---
+School:
+- name: DPS  # one entry
+  principal: Someone
+  Students:
+  - rno: 12
+    name: Jijo James
+    marks: 64
